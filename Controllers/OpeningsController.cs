@@ -25,6 +25,18 @@ namespace ChessOpenings.Controllers
             return View(await _context.Opening.ToListAsync());
         }
 
+        // GET: Openings/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // POST: Openings/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return View("Index", await _context.Opening.Where( o => o.OpeningName.Contains(SearchPhrase) ).ToListAsync());
+        }
+
         // GET: Openings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
