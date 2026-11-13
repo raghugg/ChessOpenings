@@ -1,0 +1,39 @@
+@model ChessOpenings.Models.Opening
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Opening</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="OpeningName" class="control-label"></label>
+                <input asp-for="OpeningName" class="form-control" />
+                <span asp-validation-for="OpeningName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpeningPGN" class="control-label"></label>
+                <input asp-for="OpeningPGN" class="form-control" />
+                <span asp-validation-for="OpeningPGN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
